@@ -2,14 +2,14 @@
 
 # Auto Sort Notes 📝✨
 
-**Auto Sort Notes** is a Python-based automation tool designed to help students and professionals **organize and upload notes** effortlessly. It connects with your cloud storage (Google Drive, OneDrive, etc.) and automatically sorts, renames, and uploads your files according to predefined rules.
+**Auto Sort Notes** is a Python-based automation tool designed to help students and professionals **organize and upload notes** effortlessly. It connects with your cloud storage (Google Drive, Google classroom, etc.) and automatically sorts, renames, and uploads your files according to predefined rules.
 
 ---
 
 ## Features 🚀
 
 - **Automatic Sorting:** Organize notes by subject, date, or custom tags.  
-- **Cloud Integration:** Supports Google Drive and OneDrive (OAuth authentication).  
+- **Cloud Integration:** Supports Google Drive and Google classroom, (OAuth authentication).  
 - **Cross-Platform:** Works on PC and mobile (via PyDroid).  
 - **Minimal Setup:** Simple configuration and ready-to-use scripts.  
 - **Resume-Ready Project:** Demonstrates real-world Python automation and cloud integration.
