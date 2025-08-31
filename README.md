@@ -46,7 +46,7 @@ Keep the app open during uploads; background execution may not be stable.
 
 Contributing 🤝
 Contributions are welcome! If you want to:
-Add new cloud providers
+Add new cloud providers like one Drive and more or 
 Improve sorting rules
 Optimize performance
 …feel free to fork the repo, make changes, and submit a pull request.
