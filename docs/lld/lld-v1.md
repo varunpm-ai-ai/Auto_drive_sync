@@ -5,3 +5,5 @@
 - Deterministic media classification using file metadata (extension, size, MIME type) without any ML or heuristic inference.
 
 - Pluggable cloud sync interfaces enabling upload, retry, and failure handling, abstracted from provider-specific logic.
+
+![Architecture Diagram](docs/diagrams/v1/lld/Frame1.png)
