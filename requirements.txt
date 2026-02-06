@@ -1,2 +1,6 @@
 watchdog
 pathlib
+pypdf
+python-docx
+python-pptx
+pillow
