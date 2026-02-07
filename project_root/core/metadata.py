@@ -16,7 +16,7 @@ class FileMetadata:
     path: Path
     name: str
     stem: str
-    extention: str
+    extension: str
     
     size_bytes: int
     created_at: datetime
