@@ -6,4 +6,4 @@
 
 - Pluggable cloud sync interfaces enabling upload, retry, and failure handling, abstracted from provider-specific logic.
 
-![img alt](https://github.com/varunpm-ai-ai/Auto_drive_sync/blob/main/docs/diagrams/v1/lld/Frame1.png?raw=true)
+![img alt](https://github.com/varunpm-ai-ai/Auto_drive_sync/blob/main/docs/diagrams/v1/lld/Frame%201.png?raw=true)
