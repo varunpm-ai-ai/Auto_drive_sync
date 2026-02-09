@@ -4,3 +4,4 @@ pypdf
 python-docx
 python-pptx
 pillow
+numpy

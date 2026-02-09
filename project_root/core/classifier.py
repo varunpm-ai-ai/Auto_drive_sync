@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from typing import Optional
 import re
 from metadata import FileMetadata
-
+from content_peek import ContentPeekResult
 
 # Classification data schema
 
@@ -78,12 +78,16 @@ def _detect_module(name: str) -> Optional[str]:
     return None
 
 # Public accesable api 
-def classify(metadata: FileMetadata) -> ClassificationResult:
+def classify(
+    metadata: FileMetadata,
+    content_hints: Optional[ContentPeekResult] = None
+) -> ClassificationResult:
     name = metadata.stem
 
     confidence = 0.0
     reason = []
 
+    # Name based detection
     subject = _detect_subject(name)
     if subject:
         confidence += 0.4
@@ -105,6 +109,20 @@ def classify(metadata: FileMetadata) -> ClassificationResult:
         confidence += 0.1
         reason.append("non-generic filename")
 
+    # Content peak results
+    if content_hints:
+        if content_hints.is_digital_text:
+            confidence += 0.2
+            reason.append("digital text detected via content peek")
+
+        if content_hints.keywords:
+            confidence += 0.1
+            reason.append("keywords found in content peek")
+
+        if content_hints.is_handwritten_likely:
+            reason.append("handwritten content detected")
+
+    # Final normalization & decision 
     confidence = round(min(confidence, 1.0), 2)
 
     if confidence < 0.7:
