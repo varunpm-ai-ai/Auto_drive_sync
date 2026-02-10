@@ -1,16 +1,16 @@
 from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
-from metadata import extract_metadata, FileMetadata
-from classifier import classify, ClassificationResult
-from decision import (
+from core.metadata import extract_metadata, FileMetadata
+from core.classifier import classify, ClassificationResult
+from core.decision import (
     make_decision,
     DecisionResult,
     AUTO_ROUTE,
     NEEDS_CONTENT_PEEK,
     MANUAL_REVIEW,
 )
-from content_peek import peek_content, ContentPeekResult
+from core.content_peek import peek_content, ContentPeekResult
 
 # Pipeline Scema
 

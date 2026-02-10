@@ -1,9 +1,9 @@
 from __future__ import annotations
 from pathlib import PurePosixPath
 from typing import Optional
-from metadata import FileMetadata
-from classifier import ClassificationResult
-from decision import DecisionResult, AUTO_ROUTE, MANUAL_REVIEW
+from core.metadata import FileMetadata
+from core.classifier import ClassificationResult
+from core.decision import DecisionResult, AUTO_ROUTE, MANUAL_REVIEW
 
 
 # Constants

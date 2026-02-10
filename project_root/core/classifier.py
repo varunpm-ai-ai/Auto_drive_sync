@@ -2,8 +2,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 import re
-from metadata import FileMetadata
-from content_peek import ContentPeekResult
+from core.metadata import FileMetadata
+from core.content_peek import ContentPeekResult
 
 # Classification data schema
 
