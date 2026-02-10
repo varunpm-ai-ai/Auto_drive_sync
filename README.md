@@ -2,8 +2,7 @@
 
 ## Intelligent WhatsApp → Google Drive Ingestion & Organization System**
 
-![High Level Design](docs/images/hld.png)
-![Low Level Design](docs/images/lld.png)
+![Low Level Design](https://github.com/varunpm-ai-ai/Auto_drive_sync/blob/main/docs/diagrams/v1/lld/Frame%201.png?raw=true)
 
 ---
 
