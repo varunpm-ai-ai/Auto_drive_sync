@@ -119,6 +119,7 @@ Maps classification + decision into a **logical Drive path**.
 
 Example structure:
 
+``` bash 
 6th Sem College/
 ├── Machine Learning/
 │ ├── Notes/
@@ -131,8 +132,7 @@ Example structure:
 │ └── ML Lab/
 └── Manual Intervention Review/
 
-
----
+```
 
 ### 7 Uploader (`uploader.py`)
 
