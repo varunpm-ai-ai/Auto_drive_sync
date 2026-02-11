@@ -18,12 +18,12 @@ class ClassificationResult:
 # Knowledge base
 
 SUBJECT_KEYWORDS = {
-    "Machine Learning": ["ml", "machine learning"],
-    "Cloud Computing": ["cc", "cloud"],
-    "Blockchain Technology": ["bct", "blockchain"],
-    "DevOps": ["devops"],
-    "Indian Knowledge System": ["iks"],
-    "Yoga": ["yoga"],
+    "Machine Learning": ["ml", "machine learning","BCS602"],
+    "Cloud Computing": ["cc", "cloud","BCS601"],
+    "Blockchain Technology": ["bct", "blockchain","BCS613A"],
+    "DevOps": ["devops","BCSL657D"],
+    "Indian Knowledge System": ["iks","BIKS609"],
+    "Yoga": ["yoga","BYOK658"],
 }
 
 CONTENT_TYPE_KEYWORDS = {

@@ -15,7 +15,7 @@ WATCH_PATH = Path(
     r"C:\Users\DELL\AppData\Local\Packages"
     r"\5319275A.WhatsAppDesktop_cv1g1gvanyjgm"
     r"\LocalState\sessions"
-    r"\B7AF7A014325C70D65D45E4162CE8581436F7572"
+    r"\9E758E5FBD9E42BA75D4383657E3F345E0986DCD"
     r"\transfers"
     r""
 )
