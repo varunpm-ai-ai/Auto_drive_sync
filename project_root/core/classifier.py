@@ -2,8 +2,10 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 import re
+
 from core.metadata import FileMetadata
 from core.content_peek import ContentPeekResult
+
 
 # Classification data schema
 
@@ -14,16 +16,22 @@ class ClassificationResult:
     module: Optional[str]
     confidence: float
     reason: str
-    
+
 # Knowledge base
 
 SUBJECT_KEYWORDS = {
-    "Machine Learning": ["ml", "machine learning","BCS602"],
-    "Cloud Computing": ["cc", "cloud","BCS601"],
-    "Blockchain Technology": ["bct", "blockchain","BCS613A"],
-    "DevOps": ["devops","BCSL657D"],
-    "Indian Knowledge System": ["iks","BIKS609"],
-    "Yoga": ["yoga","BYOK658"],
+    "Machine Learning": ["ml", "machine learning", "BCS602"],
+    "Cloud Computing": ["cc", "cloud computing", "BCS601"],
+    "Blockchain Technology": ["bct", "blockchain", "BCS613A"],
+    "DevOps": ["devops", "BCSL657D"],
+    "Indian Knowledge System": ["iks", "BIKS609"],
+    "Yoga": ["yoga", "BYOK658"],
+}
+
+LAB_SUBJECT_KEYWORDS = {
+    "Machine Learning": ["ml lab", "BCSL606"],
+    "Cloud Computing": ["cc lab"],
+    "DevOps": ["devops lab"],
 }
 
 CONTENT_TYPE_KEYWORDS = {
@@ -31,63 +39,75 @@ CONTENT_TYPE_KEYWORDS = {
     "Notes": ["notes", "note", "module"],
     "QPs": ["qp", "question paper"],
     "Assignments": ["assignment", "asg"],
-    "Important Questions": ["important", "imp","Quiz","quiz","Worksheet"],
-    "Manual": ["manual", "lab","program","BCSL606","CC Lab","ML Lab","Devops Lab"],
+    "Important Questions": ["important", "imp", "quiz", "worksheet"],
+    "Manual": ["manual", "lab", "program"],
 }
 
 GENERIC_NAMES = {
     "document",
     "scan",
     "image",
-    "whatsapp image",
-    "whatsapp document",
+    "whatsappimage",
+    "whatsappdocument",
 }
 
-# Helper functions
-
-# Normalise all the text fields 
+# Normalising the strings
 def _normalize(text: str) -> str:
-    return text.lower().strip()
+    return re.sub(r"[\s\-_]", "", text.lower())
 
-# Generic Names handler
+# Identifying generic names
 def _is_generic_name(stem: str) -> bool:
-    stem = _normalize(stem)
-    return any(g in stem for g in GENERIC_NAMES)
+    norm = _normalize(stem)
+    return any(g in norm for g in GENERIC_NAMES)
 
-# Subject detection handler
+# Detection logic
 def _detect_subject(name: str) -> Optional[str]:
-    name = _normalize(name)
+    norm_name = _normalize(name)
+
+    # 1️ Detect LAB subjects 
+    for subject, keywords in LAB_SUBJECT_KEYWORDS.items():
+        for kw in keywords:
+            if _normalize(kw) in norm_name:
+                return subject
+
+    # 2️ Detect THEORY subjects
     for subject, keywords in SUBJECT_KEYWORDS.items():
-        if any(k in name for k in keywords):
-            return subject
+        for kw in keywords:
+            if _normalize(kw) in norm_name:
+                return subject
+
     return None
 
-# Keyword detection handler
+# Detect content type
 def _detect_content_type(name: str) -> Optional[str]:
-    name = _normalize(name)
+    norm_name = _normalize(name)
+
     for ctype, keywords in CONTENT_TYPE_KEYWORDS.items():
-        if any(k in name for k in keywords):
-            return ctype
+        for kw in keywords:
+            if _normalize(kw) in norm_name:
+                return ctype
+
     return None
 
-# Module detection handler
+
 def _detect_module(name: str) -> Optional[str]:
     match = re.search(r"(module|mod|m)\s*(\d)", name.lower())
     if match:
         return f"Module {match.group(2)}"
     return None
 
-# Public accesable api 
+
+# Public accesable API
+
 def classify(
     metadata: FileMetadata,
     content_hints: Optional[ContentPeekResult] = None
 ) -> ClassificationResult:
-    name = metadata.stem
 
+    name = metadata.stem
     confidence = 0.0
     reason = []
 
-    # Name based detection
     subject = _detect_subject(name)
     if subject:
         confidence += 0.4
@@ -109,7 +129,7 @@ def classify(
         confidence += 0.1
         reason.append("non-generic filename")
 
-    # Content peak results
+    # Content peek if generic file name
     if content_hints:
         if content_hints.is_digital_text:
             confidence += 0.2
@@ -122,7 +142,6 @@ def classify(
         if content_hints.is_handwritten_likely:
             reason.append("handwritten content detected")
 
-    # Final normalization & decision 
     confidence = round(min(confidence, 1.0), 2)
 
     if confidence < 0.7:
