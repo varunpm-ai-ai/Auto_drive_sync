@@ -32,7 +32,7 @@ CONTENT_TYPE_KEYWORDS = {
     "QPs": ["qp", "question paper"],
     "Assignments": ["assignment", "asg"],
     "Important Questions": ["important", "imp","Quiz","quiz","Worksheet"],
-    "Manual": ["manual", "lab","BCSL606","CC Lab","ML Lab","Devops Lab"],
+    "Manual": ["manual", "lab","program","BCSL606","CC Lab","ML Lab","Devops Lab"],
 }
 
 GENERIC_NAMES = {
