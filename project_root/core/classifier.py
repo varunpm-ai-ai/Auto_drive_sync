@@ -39,7 +39,7 @@ CONTENT_TYPE_KEYWORDS = {
     "Notes": ["notes", "note", "module"],
     "QPs": ["qp", "question paper"],
     "Assignments": ["assignment", "asg"],
-    "Important Questions": ["important", "imp", "quiz", "worksheet"],
+    "Important Questions": ["important", "imp", "quiz", "worksheet","ia","que"],
     "Manual": ["manual", "lab", "program"],
 }
 
